@@ -1,0 +1,94 @@
+﻿<Window x:Class="RecoVacale.DataBase"
+        Loaded="Window_Loaded"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecoVacale"
+        mc:Ignorable="d"
+        Title="DataBase" Height="700" Width="1350">
+    <Grid>
+        <DataGrid AutoGenerateColumns="True" Height="669"
+          HorizontalAlignment="Left"
+          Name="dgEmp" VerticalAlignment="Top" Width="1342" ColumnWidth="*"
+          RowEditEnding="dgEmp_RowEditEnding"  CellEditEnding="dgEmp_CellEditEnding"
+          SelectionChanged="dgEmp_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Player">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="PlaySeq">
+                                <materialDesign:PackIcon Kind="Play" />
+                            </Button>
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="PauseSeq">
+
+
+                                <materialDesign:PackIcon Kind="Pause" />
+                            </Button>
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="StopSeq">
+
+
+                                <materialDesign:PackIcon Kind="Stop" />
+                            </Button>
+
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id"
+                      IsReadOnly="True" x:Name="Id">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FileName}" Header="FileName"
+                      IsReadOnly="False" x:Name="FileName">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FilePath}"
+                      Header="FilePath" x:Name="FilePath" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding fldvoice}"
+                      Header="fldvoice" x:Name="fldvoice" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  x:Name="btnUpdate" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                     Click="btnUpdate_Click">
+                                <materialDesign:PackIcon Kind="Pencil" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  x:Name="btnDelete" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                Click="btnDelete_Click">
+                                <materialDesign:PackIcon Kind="Delete" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

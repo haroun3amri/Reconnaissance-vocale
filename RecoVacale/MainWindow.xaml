@@ -1,0 +1,194 @@
+﻿<Window x:Name="Smart_Sound" x:Class="RecoVacale.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecoVacale"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        
+        mc:Ignorable="d"
+        Title="Smart Sound" Height="877.9" Width="1337.75">
+    <DockPanel x:Name="D1" Margin="0,0,0,-98">
+        <Menu IsMainMenu="True" DockPanel.Dock="Top">
+            
+            
+            <MenuItem Header="Home">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Home" />
+                </MenuItem.Icon>
+
+            </MenuItem>
+
+                
+               
+            
+
+            <MenuItem x:Name="DB" Header="Archive" Click="click_DB">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="database" />
+                </MenuItem.Icon>
+
+            </MenuItem>
+
+            <MenuItem Header="Sequences Filtrées" Click="FromDB_Filted_Click">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="Filter" />
+                </MenuItem.Icon>
+            </MenuItem>
+           
+            <MenuItem Header="Player">
+                <MenuItem.Icon>
+                    <materialDesign:PackIcon Kind="MusicBox" />
+                </MenuItem.Icon>
+
+            </MenuItem>
+        </Menu>
+
+        <materialDesign:Card Margin="40 4 20 0" Width="400" Height="518">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" 
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="button1_Click"
+                        Margin="0 0 16 -20" >
+                    <materialDesign:PackIcon Kind="MusicNote" />
+                </Button>
+                <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" 
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="FromDB_Click"
+                        Margin="0,0,264,312" Grid.RowSpan="2" >
+                    <materialDesign:PackIcon Kind="DatabasePlus" />
+                </Button>
+
+                <Label Grid.Row="0" Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" Margin="5" />
+                <Button Grid.Row="1" 
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"  
+                        Margin="0,0,16,193"
+                        Click="btnStop_Click">
+                    <materialDesign:PackIcon Kind="Stop" />
+                </Button>
+                <Button Grid.Row="1"  
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom"  
+                        Margin="148,0,144,193"
+                        Click="btnPause_Click">
+                    <materialDesign:PackIcon Kind="Pause" />
+                </Button>
+                <Button Grid.Row="1" 
+                        HorizontalAlignment="Left" VerticalAlignment="Bottom"  
+                        Margin="20,0,0,193"
+                        Click="btnPlay_Click">
+                    <materialDesign:PackIcon Kind="Play" />
+                </Button>
+
+                <RichTextBox x:Name="Screen" Margin="6,155,8,10" Grid.Row="1" Background="#FF6A6868"/>
+                <StackPanel Grid.Row="1" Margin="8 24 8 0" >
+                    <TextBlock FontWeight="Bold">Importer fichier audio</TextBlock>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">Ajouter un fichier Wav Mp3 .. depuis votre espace local.</TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+
+                    <materialDesign:PopupBox  Padding="2 0 2 0">
+                        <StackPanel>
+                            <Button Content="More"/>
+                            <Button Content="Options"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+
+
+                </StackPanel>
+                <TextBox Height="32" HorizontalAlignment="Left" Margin="6,10,0,0" Name="FileNameTextBox"
+                 VerticalAlignment="Top" Width="393" />
+                <TextBox HorizontalAlignment="Left" Margin="132,46,0,0" Name="State"  TextWrapping="Wrap" Text="Not Loaded" VerticalAlignment="Top"/>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="10 4 20 0" Width="400" Height="518">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" 
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Margin="0 0 16 -20">
+                    <materialDesign:PackIcon Kind="Microphone" />
+                </Button>
+                <StackPanel Grid.Row="1" Margin="8 24 8 0" >
+                    <TextBlock FontWeight="Bold">Enregistrer un fichier audio</TextBlock>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center"> Ouvrir le microphone et creer votre fichier audio</TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Grid.Row="2" Orientation="Horizontal" Margin="8">
+
+
+                    <materialDesign:PopupBox  Padding="2 0 2 0">
+                        <StackPanel>
+                            <Button Content="More"/>
+                            <Button Content="Options"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="10 4 20 0" Width="400" Height="518">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0"  Name ="LookedFor" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="Rechercher sequence"
+                 Margin="0 8 0 8">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                            <materialDesign:PackIcon Kind="AccountSearch" />
+                            <TextBlock>Tappez la sequence à rechercher dans la piste audio</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+                <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                        Margin="0 0 8 0" HorizontalAlignment="Right"
+                        ToolTip="MaterialDesignFloatingActionLightButton"
+                        Click="SearchSequence">
+                    <materialDesign:PackIcon Kind="AccountSearch" Height="24" Width="24" />
+                </Button>
+
+                <RichTextBox x:Name="Screen2"  Grid.Row="1" Background="#FF6A6868" Margin="10,14,129,293"/>
+                <RichTextBox x:Name="Screen3"  Grid.Row="1" Background="#FF6A6868" Margin="254,15,10,292"/>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                        Margin="0,116,8,202" HorizontalAlignment="Right"
+                        ToolTip="MaterialDesignFloatingActionLightButton" Grid.Row="1">
+                    <materialDesign:PackIcon Kind="Filter" Height="24" Width="24" />
+                </Button>
+
+
+                <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Virtualisation" Margin="30,185,22,161">
+                    <ComboBoxItem IsSelected="True">Filtre 1 (Utilisé Par Defaut)</ComboBoxItem>
+                    <ComboBoxItem >Filtre 2</ComboBoxItem>
+                    <ComboBoxItem>Filtre 3</ComboBoxItem>
+                </ComboBox>
+
+            </Grid>
+        </materialDesign:Card>
+
+        <DataGrid  DockPanel.Dock="Bottom" Name="grdEmployee" Margin="-24,0,24,0" />
+    </DockPanel>
+    
+
+
+
+</Window>
