@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RecoVocaleModelStoreContainer" CdmEntityContainer="RecoVocaleEntities">
+    <EntitySetMapping Name="noisies">
+      <EntityTypeMapping TypeName="RecoVocaleModel.noisy">
+        <MappingFragment StoreEntitySet="noisy">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="fldvoice" ColumnName="fldvoice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="filtreds">
+      <EntityTypeMapping TypeName="RecoVocaleModel.filtred">
+        <MappingFragment StoreEntitySet="filtred">
+          <ScalarProperty Name="fldvoice" ColumnName="fldvoice" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
